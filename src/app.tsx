@@ -50,9 +50,9 @@ export function App() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {Array.from({ length: 10 }).map(() => {
+            {Array.from({ length: 10 }).map((value,index) => {
               return (
-                <TableRow>
+                <TableRow key={index}>
                   <TableCell></TableCell>
                   <TableCell>
                     <div className="flex flex-col gap-0.5">
