@@ -11,8 +11,38 @@ import {
   TableHeader,
   TableRow,
 } from "./components/ui/table";
+import { Pagination } from "./components/pagination";
+import { useQuery } from "@tanstack/react-query";
+
+export interface TagResponse {
+  first: number;
+  prev: number | null;
+  next: number;
+  last: number;
+  pages: number;
+  items: number;
+  data: Tag[];
+}
+
+export interface Tag {
+  title: string;
+  amountOfVideos: number;
+  id: string;
+}
 
 export function App() {
+  const { data: tagsResponse, isLoading } = useQuery<TagResponse>({
+    queryKey: ["get-tags"],
+    queryFn: async () => {
+      const response = await fetch(
+        "http://localhost:3333/tags?_page=1&_per_page=10"
+      );
+      const data = await response.json();
+
+      return data;
+    },
+  });
+
   return (
     <div className="py-10 space-y-8">
       <div>
@@ -50,7 +80,7 @@ export function App() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {Array.from({ length: 10 }).map((value,index) => {
+            {Array.from({ length: 10 }).map((value, index) => {
               return (
                 <TableRow key={index}>
                   <TableCell></TableCell>
@@ -73,6 +103,7 @@ export function App() {
             })}
           </TableBody>
         </Table>
+        <Pagination />
       </main>
     </div>
   );
