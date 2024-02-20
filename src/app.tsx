@@ -43,6 +43,10 @@ export function App() {
     },
   });
 
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <div className="py-10 space-y-8">
       <div>
@@ -80,19 +84,19 @@ export function App() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {Array.from({ length: 10 }).map((value, index) => {
+            {tagsResponse?.data.map((tag) => {
               return (
-                <TableRow key={index}>
+                <TableRow key={tag.id}>
                   <TableCell></TableCell>
                   <TableCell>
                     <div className="flex flex-col gap-0.5">
-                      <span className="font-medium">React</span>
+                      <span className="font-medium">{tag.title}</span>
                       <span className="text-xs text-zinc-500">
-                        9E0E95BF-4BF6-4A23-B79E-F71AE9C9C117
+                      {tag.id}
                       </span>
                     </div>
                   </TableCell>
-                  <TableCell className="text-zinc-300">13 Video (s)</TableCell>
+                  <TableCell className="text-zinc-300">{tag.amountOfVideos} video(s) </TableCell>
                   <TableCell className="text-right">
                     <Button size="icon">
                       <MoreHorizontal className="size-4" />
@@ -103,7 +107,8 @@ export function App() {
             })}
           </TableBody>
         </Table>
-        <Pagination />
+
+        {tagsResponse && <Pagination pages={tagsResponse.pages} items={tagsResponse.items} page={1} />}
       </main>
     </div>
   );
