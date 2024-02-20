@@ -1,21 +1,13 @@
-import { Plus, Search, Filter, FileDown, MoreHorizontal } from "lucide-react";
-import { Header } from "./components/header";
-import { Tabs } from "./components/tabs";
-import { Button } from "./components/ui/button";
-import { Control, Input } from "./components/ui/input";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "./components/ui/table";
-import { Pagination } from "./components/pagination";
-import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import useDebounceValue from "./hooks/use-debounce-value";
+import { Plus, Search, Filter, FileDown, MoreHorizontal } from 'lucide-react'
+import { Header } from './components/header'
+import { Tabs } from './components/tabs'
+import { Button } from './components/ui/button'
+import { Control, Input } from './components/ui/input'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './components/ui/table'
+import { Pagination } from './components/pagination'
+import { useQuery, keepPreviousData } from '@tanstack/react-query'
+import { useSearchParams } from 'react-router-dom'
+import { useState } from 'react'
 
 export interface TagResponse {
   first: number;
@@ -139,14 +131,8 @@ export function App() {
           </TableBody>
         </Table>
 
-        {tagsResponse && (
-          <Pagination
-            pages={tagsResponse.pages}
-            items={tagsResponse.items}
-            page={page}
-          />
-        )}
+        {tagsResponse && <Pagination pages={tagsResponse.pages} items={tagsResponse.items} page={page} />}
       </main>
     </div>
-  );
+  )
 }
