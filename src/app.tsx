@@ -50,23 +50,27 @@ export function App() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell></TableCell>
-              <TableCell>
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-medium">React</span>
-                  <span className="text-xs text-zinc-500">
-                    9E0E95BF-4BF6-4A23-B79E-F71AE9C9C117
-                  </span>
-                </div>
-              </TableCell>
-              <TableCell className="text-zinc-300">13 Video (s)</TableCell>
-              <TableCell className="text-right">
-                <Button size="icon">
-                  <MoreHorizontal className="size-4" />
-                </Button>
-              </TableCell>
-            </TableRow>
+            {Array.from({ length: 10 }).map(() => {
+              return (
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell>
+                    <div className="flex flex-col gap-0.5">
+                      <span className="font-medium">React</span>
+                      <span className="text-xs text-zinc-500">
+                        9E0E95BF-4BF6-4A23-B79E-F71AE9C9C117
+                      </span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-zinc-300">13 Video (s)</TableCell>
+                  <TableCell className="text-right">
+                    <Button size="icon">
+                      <MoreHorizontal className="size-4" />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </main>
