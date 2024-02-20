@@ -1,7 +1,10 @@
-import { Plus } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 import { Header } from "./components/header";
 import { Tabs } from "./components/tabs";
 import { Button } from "./components/ui/button";
+import { Control, Input } from "./components/ui/input";
+
+
 
 export function App() {
   return (
@@ -17,6 +20,13 @@ export function App() {
             <Plus className="size-3" />
             Create new
           </Button>
+        </div>
+
+        <div className="flex items-center justify-between">
+          <Input variant="filter">
+            <Search className="size-3" />
+            <Control placeholder="Search tags..."/>
+          </Input>
         </div>
       </main>
     </div>
